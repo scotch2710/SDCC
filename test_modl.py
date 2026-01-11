@@ -5,7 +5,7 @@ import time
 
 # --- CONFIGURAZIONE ---
 # 1. L'URL della tua API (Controlla il terminale quando premi F5)
-API_URL = "http://localhost:7071/api/predict"
+API_URL = "https://sdcc-gallo-fabrizio-app-c9bjg6bbcsa4aph3.italynorth-01.azurewebsites.net/api/predict"
 
 # 2. Il file di test che hai sul PC
 TEST_FILE = "DIA_testset_RDKit_descriptors.csv"

@@ -7,3 +7,6 @@ azure-storage-blob
 pandas
 scikit-learn
 openpyxl
+numpy
+requests
+rdkit
