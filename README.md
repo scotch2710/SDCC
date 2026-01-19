@@ -1,4 +1,6 @@
-Realizzare una pipeline automatizzata per il Machine Learning, basata su architettura serverless e tecnologie FaaS. Il flusso deve iniziare con il caricamento di un file contenente dati da analizzare dal seguente dataset pubblico su un servizio di storage sul cloud: Drug induced Autoimmunity Dataset
+Pipeline automatizzata per il Machine Learning, basata su architettura serverless e tecnologie FaaS. Il flusso deve iniziare con il caricamento di un file contenente dati da analizzare dal seguente dataset pubblico su un servizio di storage sul cloud: Drug induced Autoimmunity Dataset
+
+Il tutto viene sviluppato utilizzando i servizi forniti da AZURE.
 
 STEP 1: Il caricamento del dataset sullo storage deve fungere da evento trigger e attivare automaticamente una funzione FaaS responsabile della fase successiva. 
 
