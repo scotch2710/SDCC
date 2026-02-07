@@ -7,14 +7,14 @@ import time
 from azure.storage.blob import BlobServiceClient
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv()           # per leggere file nascosto che contiene chiave di connessione
 
 # --- CONFIGURAZIONE ---
-# Sostituisci con i tuoi valori reali
+
 API_URL = "https://sdcc-gallo-fabrizio-app-c9bjg6bbcsa4aph3.italynorth-01.azurewebsites.net/api/predict" 
 CONTAINER_INPUT = "input-data"
 
-# Recupera la connection string dalle variabili d'ambiente (più sicuro) o incollala qui
+
 CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
 
 if not CONNECTION_STRING:

@@ -33,20 +33,20 @@ def data_preprocessing(myblob: func.InputStream):
         # 1. Rimozione valori nulli
         df_clean = df.dropna()
 
-        # 2. Rimozione colonna SMILES (Fondamentale!)
+        # 2. Rimozione colonna SMILES
         # La formula chimica testuale non serve al modello matematico, 
         # usiamo solo i descrittori numerici già calcolati.
         if "SMILES" in df_clean.columns:
             df_clean = df_clean.drop(columns=["SMILES"])
         
-        # 2. Codifica variabili categoriche (One-Hot Encoding)
+        # 2. Codifica variabili categoriche 
         # Trasforma colonne di testo in numeri (es. "Maschio/Femmina" -> 0/1)
         # drop_first=True evita la collinearità
         df_clean = pd.get_dummies(df_clean, drop_first=True)
         
         logging.info(f"Dataset pulito. Dimensioni finali: {df_clean.shape}")
 
-        # --- SALVATAGGIO SU STORAGE (processed-data) --- [cite: 10]
+        # --- SALVATAGGIO SU STORAGE (processed-data) 
         # Prepariamo il buffer per salvare il CSV
         output_buffer = io.StringIO()
         df_clean.to_csv(output_buffer, index=False)
@@ -72,8 +72,8 @@ def data_preprocessing(myblob: func.InputStream):
     
 
 # --- CONFIGURAZIONE GLOBALE ---
-# MODIFICA QUI: Inserisci il nome esatto della colonna target del tuo CSV
-TARGET_COLUMN = "Label" 
+
+TARGET_COLUMN = "Label"   #colonna da predire
 
 # --- STEP 3: TRAINING DEL MODELLO ---
 # Questa funzione parte automaticamente quando un file pulito arriva in 'processed-data'
@@ -128,7 +128,7 @@ def train_model(myblob: func.InputStream):
         raise e
 
 
-# --- STEP 4: API DI INFERENZA (PREDIZIONE) ---
+# --- STEP 4: API (PREDIZIONE) ---
 # Questa funzione espone un indirizzo HTTP per ricevere dati e dare risposte
 @app.route(route="predict", auth_level=func.AuthLevel.ANONYMOUS)
 def predict(req: func.HttpRequest) -> func.HttpResponse:
@@ -164,7 +164,7 @@ def predict(req: func.HttpRequest) -> func.HttpResponse:
         loaded_model = joblib.load(model_buffer)
         
         # Il modello potrebbe aver bisogno che le colonne siano nello stesso ordine del training.
-        # (Opzionale ma consigliato in produzione: qui si farebbe un reorder delle colonne)
+        
         
         prediction = loaded_model.predict(input_data)
         
