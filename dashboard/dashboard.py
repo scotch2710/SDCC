@@ -81,13 +81,13 @@ if df is not None:
                 if response.status_code == 200:
                     result = response.json()
 
-                    with st.expander("🔍 DEBUG - Risposta Grezza API"):
-                        st.write(result)
+                    #with st.expander("🔍 DEBUG - Risposta Grezza API"):
+                        #st.write(result)
                     
                     pred = result.get('prediction', -1)
-                    # prob = result.get('probability', 0.0)
                     
-                    st.divider()
+                    
+                    #st.divider()
                     col1, col2 = st.columns(2)
                     
                     if str(pred) == "1":
